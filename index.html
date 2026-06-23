@@ -304,7 +304,8 @@ function buildLandscape(){
   });
   for(var s=0;s<6;s++) for(var f=0;f<=NF;f++){
     if(!pcs[(OPEN[s]+f)%12]) continue;
-    landscapeG.appendChild(E('circle',{cx:fx(f),cy:sy(s),r:7,fill:'#ffffff','fill-opacity':0.55}));
+    // note "spente" degli altri accordi: piccole e in azzurro-grigio tenue (si illuminano quando l'accordo entra in esecuzione)
+    landscapeG.appendChild(E('circle',{cx:fx(f),cy:sy(s),r:6,fill:'#bcccdb','fill-opacity':0.6,stroke:'#000000','stroke-opacity':0.18,'stroke-width':0.6}));
   }
 }
 function renderNotes(){
@@ -550,20 +551,10 @@ document.addEventListener('keydown', function(e){
   selectChord(oks[pos]); e.preventDefault();
 });
 
-/* ---------- contatori di test ---------- */
-var initTestsRun = 0;
-function runInitTest() {
-  initTestsRun++;
-  console.log("SRV-EBITSERVICE Init Test " + initTestsRun + ": NF=" + NF + ", showAll=" + showAll);
-}
-
 /* ---------- avvio ---------- */
 buildBoard();
 buildPickers();
 parseInput();
-runInitTest();
 </script>
 </body>
 </html>
-
-```
